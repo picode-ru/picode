@@ -57,6 +57,8 @@ export function _translate(text) {
   return text.split('').map(char => transl[char] || char).join('');
 }
 
+
+
 export function _addCss(id, arrayCss){
 
   arrayCss.keys().forEach(element => {
