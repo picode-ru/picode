@@ -1,8 +1,10 @@
 import "./index.scss"
 
-import { _trnsleit, human } from "./lib.js";
+import { translateText } from "./lib.js";
 
-console.log(_trnsleit("андрей"));
+console.log(translateText("андрей привет"));
+
+
 
 
 

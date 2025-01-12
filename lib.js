@@ -16,7 +16,7 @@
  * translate(""); // Returns ""
  * ```
  */
-export function _translate(text) {
+export function translateText(text) {
   const transl = {
     'А': 'A', 'а': 'a',
     'Б': 'B', 'б': 'b',
@@ -58,24 +58,60 @@ export function _translate(text) {
 }
 
 
+/**
+ * Generates a random text string of a specified length, consisting of alphanumeric characters,
+ * special symbols, and spaces. The probability of a space appearing in the string is controlled by the `spaceProbability` parameter.
+ *
+ * @param {number} length The length of the generated text string (number of characters). Must be a non-negative integer.
+ * @param {number} [spaceProbability=0.2] The probability of a space appearing at each position in the generated string.
+ *                                        The value must be in the range from 0 to 1.
+ * @returns {string} A random text string of the specified length.
+ *
+ * @example
+ * // Generate a random string of length 10 with a 20% space probability (default).
+ * const randomString1 = generateRandomText(10);
+ * console.log(randomString1); // Output: for example "a5h&gJ7d r"
+ *
+ * @example
+ * // Generate a random string of length 20 with a 50% space probability.
+ * const randomString2 = generateRandomText(20, 0.5);
+ * console.log(randomString2); // Output: for example "c%w! 8W2?b^Z Y h$i;@,2"
+ *
+ * @example
+ * // Generate a random string of length 5 with no spaces.
+ * const randomString3 = generateRandomText(5, 0);
+ * console.log(randomString3); // Output: for example "aB#c9"
+ *
+ * @example
+ * // Generate a random string of length 15 with a space at every position.
+ * const randomString4 = generateRandomText(15, 1);
+ * console.log(randomString4); // Output: for example "               "
+ */
 
 
+export function generateRandomText(length, spaceProbability = 0.2) {
+  // String containing all possible characters for generating random text
+  const characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+=-`~[]{}|;':\",./<>?";
 
+  // Initialize an empty string to accumulate the result
+  let text = "";
 
+  // Loop to generate characters up to the specified string length
+  for (let i = 0; i < length; i++) {
+      // Check if a space needs to be added with the given probability
+      if (Math.random() < spaceProbability) {
+        text += " "; // Add a space at the current position
+      } else {
+        // Generate a random index to select a character from the 'characters' string
+        const randomIndex = Math.floor(Math.random() * characters.length);
+        // Add the random character at the current position
+        text += characters.charAt(randomIndex);
+      }
+  }
+  // Return the formed random text string
+  return text;
+}
 
-
-
-
-export function _addCss(id, arrayCss){
-
-  arrayCss.keys().forEach(element => {
-    // console.log(element);
-    // console.log(arrayCss[element]);
-
-    id.style[element] = arrayCss[element];
-});
-
-} 
 
 
 
