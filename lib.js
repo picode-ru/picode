@@ -59,6 +59,9 @@ export function _translate(text) {
 
 
 
+
+
+
 export function _addCss(id, arrayCss){
 
   arrayCss.keys().forEach(element => {
